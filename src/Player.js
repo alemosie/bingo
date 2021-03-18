@@ -5,14 +5,16 @@ export const Player = (name, points) => {
   return (
     <Card className="Player-card">
       <ListGroup variant="flush">
-        <ListGroup.Item><h4>{name}</h4></ListGroup.Item>
+        <ListGroup.Item className="Player-card-header">
+          <h4>{name}</h4>
+        </ListGroup.Item>
         <ListGroup.Item>
           <Row>
-            <div className="Change-point Subtract-point">
-            </div>
-            {points}
-            <div className="Change-point Add-point">
-            </div>
+            <span className="Change-point Subtract-point">
+              -</span>
+            <span className="Points">{points}</span>
+            <span className="Change-point Add-point">
+              +</span>
           </Row>
         </ListGroup.Item>
       </ListGroup>

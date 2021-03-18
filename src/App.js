@@ -32,7 +32,7 @@ function App() {
           </Col>
           <Col>
             <h2>Players</h2>
-            <Row>
+            <Row className="Player-card-container">
               {Player('Alex', 1)}
               {Player('Mike', 1)}
               {Player('Rosa', 1)}
