@@ -3,7 +3,7 @@ import { Container, Row, Col, Table } from 'react-bootstrap';
 
 
 export const Scoring = (props) => {
-  const { pointChange, changeRow, setChangeRow } = props;
+  const { pointChange, changeRow, setChangeRow, setNumPointChange } = props;
   const bingoTypeTableRef = useRef(null);
   const bingoValueTableRef = useRef(null);
 
@@ -55,6 +55,10 @@ export const Scoring = (props) => {
 
     // Only update if there's a valid row to update
     if (newCurrentRow) {
+      // Set the number of points to change
+      const numPoints = Number(newCurrentRow.getAttribute('numpoints'))
+      setNumPointChange(numPoints)
+
       currentRow.classList.remove('table-success')
       newCurrentRow.classList.add('table-success')
       setIndex(newCurrentRowIndex);
@@ -74,13 +78,9 @@ export const Scoring = (props) => {
               </tr>
             </thead>
             <tbody>
-              <tr className={'table-success'}>
-                <th scope="row">First bingo</th>
-                <td>5</td>
-              </tr>
-              <tr>
+              <tr className='table-success' numpoints={5}>
                 <th scope="row">Cover all</th>
-                <td>4</td>
+                <td>5</td>
               </tr>
             </tbody>
           </Table>
@@ -94,23 +94,23 @@ export const Scoring = (props) => {
               </tr>
             </thead>
             <tbody>
-              <tr className="table-success">
+              <tr className="table-success" numpoints={5}>
                 <th scope="row">First bingo</th>
                 <td>5</td>
               </tr>
-              <tr>
+              <tr numpoints={4}>
                 <th scope="row">Second bingo</th>
                 <td>4</td>
               </tr>
-              <tr>
+              <tr numpoints={3}>
                 <th scope="row">Third bingo</th>
                 <td>3</td>
               </tr>
-              <tr>
+              <tr numpoints={2}>
                 <th scope="row">Fourth bingo</th>
                 <td>2</td>
               </tr>
-              <tr>
+              <tr numpoints={1}>
                 <th scope="row">All others</th>
                 <td>1</td>
               </tr>

@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { Card, ListGroup, Row } from 'react-bootstrap';
 
 export const Player = (props) => {
-  const { name, onPointChange } = props;
+  const { name, numPointChange, onPointChange } = props;
   const [pointTotal, setPointTotal] = useState(0);
 
   const targetOnClick = (event) => {
     const change = Number(event.target.getAttribute('change'));
     onPointChange(change);
+    const pointsToChange = numPointChange * change;
 
     // Adjust the points
-    setPointTotal(pointTotal + change);
+    setPointTotal(pointTotal + pointsToChange);
   }
 
   return (

@@ -31,6 +31,10 @@ function App() {
   const [pointChange, setPointChange] = useState(0);
   const [changeRow, setChangeRow] = useState(false);
 
+  // Figure out how many points to add from the Scoring table
+  const [numPointChange, setNumPointChange] = useState(5);
+
+
   const handlePointChange = (change) => {
     setChangeRow(true);
     setPointChange(change);
@@ -54,19 +58,20 @@ function App() {
               pointChange={pointChange}
               changeRow={changeRow}
               setChangeRow={setChangeRow}
+              setNumPointChange={setNumPointChange}
             />
           </Col>
           <Col>
             <h2>Players</h2>
             <Row className="Player-card-container">
-              <Player name='Alex' points={0} onPointChange={handlePointChange} />
-              <Player name='Mike' points={0} onPointChange={handlePointChange} />
-              <Player name='Rosa' points={0} onPointChange={handlePointChange} />
-              <Player name='Dino' points={0} onPointChange={handlePointChange} />
-              <Player name='Michele' points={0} onPointChange={handlePointChange} />
-              <Player name='Frank' points={0} onPointChange={handlePointChange} />
-              <Player name='Peggy' points={0} onPointChange={handlePointChange} />
-              <Player name='Roslyn' points={0} onPointChange={handlePointChange} />
+              <Player name='Alex' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
+              <Player name='Mike' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
+              <Player name='Rosa' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
+              <Player name='Dino' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
+              <Player name='Michele' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
+              <Player name='Frank' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
+              <Player name='Peggy' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
+              <Player name='Roslyn' points={0} numPointChange={numPointChange} onPointChange={handlePointChange} />
             </Row>
           </Col>
         </Row>
