@@ -1,7 +1,18 @@
+import { useState } from 'react';
 import { Card, ListGroup, Row } from 'react-bootstrap';
 
+export const Player = (props) => {
+  const { name, onPointChange } = props;
+  const [pointTotal, setPointTotal] = useState(0);
 
-export const Player = (name, points) => {
+  const targetOnClick = (event) => {
+    const change = Number(event.target.getAttribute('change'));
+    onPointChange(change);
+
+    // Adjust the points
+    setPointTotal(pointTotal + change);
+  }
+
   return (
     <Card className="Player-card">
       <ListGroup variant="flush">
@@ -10,11 +21,20 @@ export const Player = (name, points) => {
         </ListGroup.Item>
         <ListGroup.Item>
           <Row>
-            <span className="Change-point Subtract-point">
-              -</span>
-            <span className="Points">{points}</span>
-            <span className="Change-point Add-point">
-              +</span>
+            <span
+              onClick={targetOnClick}
+              change={-1}
+              className="Change-point Subtract-point">
+              -
+            </span>
+            <span
+              className="Points">{pointTotal}</span>
+            <span
+              onClick={targetOnClick}
+              change={1}
+              className="Change-point Add-point">
+              +
+            </span>
           </Row>
         </ListGroup.Item>
       </ListGroup>

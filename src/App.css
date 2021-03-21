@@ -47,6 +47,11 @@ h4, h5 {
   margin: 0 16px 1px 0;
 }
 
+#number-list .btn.Called-number {
+  color: white;
+  background-color: #343a40;
+}
+
 /* Scoring tables */
 
 .Scoring-container div {
@@ -72,7 +77,7 @@ h4, h5 {
 }
 
 .Player-card-header.list-group-item {
-  background-color: black;
+  background-color: #343a40;
   height: 48px;
   color: white;
 }
@@ -89,13 +94,25 @@ h4, h5 {
   cursor: pointer;
 }
 
+.Change-point:active {
+  border-radius: 0.2rem;
+}
+
+.Add-point {
+  margin-right: 8px;
+}
+
 .Add-point:hover {
   color: green;
 }
 
 .Add-point:active {
   background-color: green;
-  color: white
+  color: white;
+}
+
+.Subtract-point {
+  margin-left: 8px;
 }
 
 .Subtract-point:hover {

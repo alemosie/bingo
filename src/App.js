@@ -1,25 +1,47 @@
+import { useState } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+
 import logo from './logo.png';
 import './App.css';
 import { Player } from './Player.js'
 import { Scoring } from './Scoring.js'
 
-import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const calledNumbers = () => {
   let buttons = [];
+  const onClick = (event) => {
+    event.target.classList.toggle('Called-number')
+  }
+
   for (let num = 1; num <= 75; num++) {
-    buttons.push(<Button variant="outline-dark" size="sm" key={num}>{num}</Button>)
+    buttons.push(
+      <Button
+        onClick={onClick}
+        variant="outline-dark"
+        size="sm"
+        key={num}>
+        {num}
+      </Button>
+    )
   }
   return buttons;
 }
 
 function App() {
+  const [pointChange, setPointChange] = useState(0);
+  const [changeRow, setChangeRow] = useState(false);
+
+  const handlePointChange = (change) => {
+    setChangeRow(true);
+    setPointChange(change);
+  }
+
   return (
     <div className="App">
       <span className="App-logo-sparkles">✨</span>
       <img src={logo} className="App-logo" alt="logo" />
       <span className="App-logo-sparkles">✨</span>
-      <Container>
+      <Container className="Top-container">
         <Row>
           <Col>
             <Container>
@@ -28,19 +50,23 @@ function App() {
                 {calledNumbers()}
               </div>
             </Container>
-            {Scoring()}
+            < Scoring
+              pointChange={pointChange}
+              changeRow={changeRow}
+              setChangeRow={setChangeRow}
+            />
           </Col>
           <Col>
             <h2>Players</h2>
             <Row className="Player-card-container">
-              {Player('Alex', 1)}
-              {Player('Mike', 1)}
-              {Player('Rosa', 1)}
-              {Player('Dino', 1)}
-              {Player('Michele', 1)}
-              {Player('Frank', 1)}
-              {Player('Peggy', 1)}
-              {Player('Roslyn', 1)}
+              <Player name='Alex' points={0} onPointChange={handlePointChange} />
+              <Player name='Mike' points={0} onPointChange={handlePointChange} />
+              <Player name='Rosa' points={0} onPointChange={handlePointChange} />
+              <Player name='Dino' points={0} onPointChange={handlePointChange} />
+              <Player name='Michele' points={0} onPointChange={handlePointChange} />
+              <Player name='Frank' points={0} onPointChange={handlePointChange} />
+              <Player name='Peggy' points={0} onPointChange={handlePointChange} />
+              <Player name='Roslyn' points={0} onPointChange={handlePointChange} />
             </Row>
           </Col>
         </Row>
